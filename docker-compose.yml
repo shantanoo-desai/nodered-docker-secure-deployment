@@ -1,0 +1,16 @@
+services:
+  nodered:
+    image: nodered/node-red:3.0.1
+    user: "1000"
+    secrets:
+      - nodered-admin-creds
+      - nodered-readonly-creds
+    volumes:
+      - ./settings.js:/data/settings.js
+    ports:
+      - "1880:1880"
+secrets:
+  nodered-admin-creds:
+    environment: NODERED_ADMIN_CREDS
+  nodered-readonly-creds:
+    environment: NODERED_READONLY_CREDS
